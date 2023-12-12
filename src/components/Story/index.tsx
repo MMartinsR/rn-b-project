@@ -1,11 +1,11 @@
-import { Input, Flex, Heading } from "native-base";
-import ListCard from "../ListCards";
+import { Flex, Heading } from "native-base";
+import ArtistCard from "../ArtistsCard";
 
 export default function Story() {
     return (
-        <Flex pt={5} flex={1} alignContent="initial" bg='primary.100'>
-            <Heading color='secondary.100' mb={10} fontSize='20px'>Story</Heading>
-            <ListCard />
+        <Flex pt={2} pb={4} alignContent="initial" bg='primary.100' h="container">
+            <Heading color='secondary.100' fontSize='20px' pb={2}>Story</Heading>
+            <ArtistCard />
         </Flex>
     )
 }

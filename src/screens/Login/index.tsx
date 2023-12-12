@@ -1,6 +1,7 @@
 import { Flex, Heading, Input } from "native-base";
 import { useContext, useState } from "react";
 import { Alert } from "react-native";
+import { useToast } from 'native-base';
 
 import UserContext from "../../context/userContext";
 import Button from "../../components/Button";
@@ -8,47 +9,38 @@ import axios from "axios";
 
 export default function Login() {
     const userData = useContext(UserContext);
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
+    const toast = useToast();
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
 
     const handleLogin = () => {
-        console.log("entrou");
+        console.log("Bem vindo(a)!");
         axios.post("http://192.168.1.91:3000/user/login", {
-        username: "gabriel",
-        password: "1234",
+        username: username,
+        password: password,
       })
       .then(function (response) {
         userData.setUser({
-          name: "Gabriel",
-          email: "gabrielgs1408@gmail.com",
-          token: response.data.token
+          name: username,
+          password: password,
+          email: "mariana.rosa@al.infnet.edu.br",
+          token: response.data.token,
+          albums: {}
         });
-        
       })
       .catch(function (error) {
         console.error("error", error);
-        Alert.alert("Error", "usuário ou senha inválidos");
+        toast.show({
+          description: 'Usuário ou senha inválidos!'
+        })
       });
-    }
-
-    function login () {
-
-        if (name === 'Mariana' && email === 'Mariana@gmail.com') {
-            userData.setUser({
-                name: name,
-                email: email,
-            })
-        } else {
-            Alert.alert('Credenciais inválidas!');
-        }
-        console.log(userData.user);
     }
 
     return (  
         <Flex p={5} flex={1} justifyContent='center' alignItems='center' bg='primary.100'>
             <Heading color='secondary.100' mb={10}>Login</Heading>
-            <Input onChangeText={setName} mt={3} bgColor='transparency.100' color='white' />
-            <Input onChangeText={setEmail} mt={3} bgColor='transparency.100' color='white' />
+            <Input placeholder="Username" onChangeText={setUsername} mt={3} bgColor='transparency.100' color='white' />
+            <Input placeholder="Password" onChangeText={setPassword} mt={3} bgColor='transparency.100' color='white' />
             <Flex width="100%" marginTop={10}>
                 <Button 
                     content="Sign in" 

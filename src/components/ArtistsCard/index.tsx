@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { FlatList } from "react-native";
 import Card from "../Card";
 import { ARTISTS } from "../Data/data";
+import { Flex } from "native-base";
 
 export default function ArtistCard() {
     const [selectedArtist, setSelectedArtist] = useState("");
@@ -14,18 +15,22 @@ export default function ArtistCard() {
 
     
     return (
-        <FlatList
-                data={ARTISTS}
-                renderItem={({ item }) => (
-                    <Card 
-                        key={item.id}
-                        type={item.name}
-                        img={item.img}                        
-                        setSelected={setSelectedArtist}
-                    />
-                )}
-                keyExtractor={(item) => item.id}
-                horizontal
-            />
+        <Flex h={"container"}>
+            <FlatList
+                    data={ARTISTS}
+                    renderItem={({ item }) => (
+                        <Card 
+                            key={item.id}
+                            type={item.name}
+                            img={item.img} 
+                            borderRadius="90px"
+                            size="85px"                       
+                            setSelected={setSelectedArtist}
+                        />
+                    )}
+                    keyExtractor={(item) => item.id}
+                    horizontal
+                />
+        </Flex>
     )
 }
