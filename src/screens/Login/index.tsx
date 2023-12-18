@@ -1,31 +1,31 @@
-import { Flex, Heading, Input } from "native-base";
+import { Flex, Heading, Input, Text } from "native-base";
 import { useContext, useState } from "react";
-import { Alert } from "react-native";
 import { useToast } from 'native-base';
+import { TouchableOpacity } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 import UserContext from "../../context/userContext";
 import Button from "../../components/Button";
-import axios from "axios";
+import { login } from "../../services/auth";
 
 export default function Login() {
     const userData = useContext(UserContext);
     const toast = useToast();
+    const navigator = useNavigation();
+
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
     const handleLogin = () => {
-        console.log("Bem vindo(a)!");
-        axios.post("http://192.168.1.91:3000/user/login", {
-        username: username,
+      login({
+        username: username, 
         password: password,
       })
       .then(function (response) {
         userData.setUser({
           name: username,
-          password: password,
           email: "mariana.rosa@al.infnet.edu.br",
           token: response.data.token,
-          albums: {}
         });
       })
       .catch(function (error) {
@@ -46,6 +46,9 @@ export default function Login() {
                     content="Sign in" 
                     variation="terciary" 
                     handleClick={handleLogin} />
+                <TouchableOpacity onPress={() => navigator.navigate("Register")}>
+                  <Text style={{ color: 'white' }}>Cadastrar</Text>
+                </TouchableOpacity>
             </Flex>
         </Flex>
     )

@@ -1,10 +1,13 @@
 import { useContext } from "react";
-import UserContext from "../../context/userContext";
-import Login from "../Login";
-import Home from "../Home";
 
+import UserContext from "../../context/userContext";
+import Home from "../Home";
+import { StackNavigation } from "../../routes/stack";
 
 export default function Wrapper() {
-    const userData = useContext(UserContext) 
-    return userData.user != null ? <Home/> : <Login/>;
+    const userData = useContext(UserContext); 
+
+    return userData.user != null ? <Home/> : (
+        <StackNavigation/>
+    );
 }

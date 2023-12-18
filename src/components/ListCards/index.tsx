@@ -5,7 +5,13 @@ import { ALBUMS } from "../Data/data";
 import Selected from "../../components/SelectedAlbumDisplay";
 import { Flex, Heading } from "native-base";
 
-export default function ListCard() {
+interface Props {
+    items: string[];
+  }
+
+export default function ListCard({
+    items,
+  }: Props) {
     const [selectedAlbum, setSelectedAlbum] = useState("");
 
     useEffect(() => {
@@ -19,7 +25,7 @@ export default function ListCard() {
         <Flex>
             <Heading color='secondary.100' fontSize='20px' pb={2}>Discover Pick ForYou</Heading>
             <FlatList
-                    data={ALBUMS}
+                    data={items}
                     renderItem={({ item }) => (
                         <Card 
                             key={item.id}

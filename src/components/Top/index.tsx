@@ -1,25 +1,33 @@
 import React from "react";
-import { Flex, Center, Spacer, Box } from "native-base";
+import { Flex, Center, Spacer, Image, FavouriteIcon } from "native-base";
+import { TouchableOpacity } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
-export default function Top() {
+export default function Top({ navigation }) {
+    const navigator = useNavigation();
+
     return (
-        <Flex h={"container"} direction="row" safeAreaTop bg='red.500'>
-            <Center size={16} ml={3} mt={0.5} bg="primary.500" _dark={{
+        <Flex h={"container"} direction="row"  bg='primary.100'>
+            <Center size={16} bg="primary.100" _dark={{
             bg: "primary.400"
-            }} rounded="sm" _text={{
-            color: "warmGray.50",
-            fontWeight: "medium"
             }}>
-                Box 1
+                <FavouriteIcon size="8" color="white"/>
             </Center>
             <Spacer />
-            <Center size={16} mr={3} mt={0.5} bg="secondary.500" _dark={{
+            <Center size={16} bg="primary.100" _dark={{
             bg: "secondary.400"
-            }} rounded="sm" _text={{
-            color: "warmGray.50",
-            fontWeight: "medium"
             }}>
-                Box 2
+                <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+                <Image
+                m={2}
+                source={{
+                    uri: 'https://img.freepik.com/premium-vector/portrait-cheerful-young-smiling-girl-cartoon-round-vector-banner_364586-1766.jpg?w=2000',
+                }}
+                borderRadius="30px"
+                alt="Profile pic"
+                size="50px"
+                />
+                </TouchableOpacity>
             </Center>
         </Flex>
 

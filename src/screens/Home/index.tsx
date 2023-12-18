@@ -1,39 +1,28 @@
 import { Flex, Heading } from "native-base";
+import { useContext, useEffect, useState } from "react";
+
 import Top from "../../components/Top";
 import Story from "../../components/Story";
-import { useContext, useEffect } from "react";
-import { Alert } from "react-native";
 import UserContext from "../../context/userContext";
 import ListCard from "../../components/ListCards";
-import axios from "axios";
+import { getAlbums } from "../../services/albums";
 
-export default function Home() {
+export default function Home({ navigation }) {
     const userData = useContext(UserContext);
+    const [albums, setAlbums] = useState([]);
 
-    userData.user?.token
-    // useEffect(() => {
-    //     axios.get("http://192.168.1.91:3000/albums", {
-    //         token: userData.user?.token,
-    //     })
-    //     .then(function (response) {
-    //         userData.setUser({
-    //           albums: response.data.albums
-    //         });
-    //       })
-    //       .catch(function (error) {
-    //         console.error("error", error);
-    //         Alert.alert("Error", "Usuário ou senha inválidos!");
-    //       });
-
-    // }, [])
-
+    useEffect(() => {
+        getAlbums(userData.user?.token)
+        .then((response) => setAlbums(response.data))
+        .catch((e) => console.log("erro", e));
+    }, []);
 
     return (
         <Flex p={5} flex={1} bg='primary.100' safeAreaTop>
-            <Top />
+            <Top navigation={navigation} />
             <Heading fontSize='40px' pt={2} color='secondary.100'>Welcome back {userData.user?.name}</Heading>
             <Story/>
-            <ListCard/>            
+            <ListCard items={albums}/>            
         </Flex>
     )
 }
