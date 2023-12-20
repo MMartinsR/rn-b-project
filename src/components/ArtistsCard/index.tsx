@@ -1,10 +1,15 @@
 import { useEffect, useState } from "react";
 import { FlatList } from "react-native";
 import Card from "../Card";
-import { ARTISTS } from "../Data/data";
 import { Flex } from "native-base";
 
-export default function ArtistCard() {
+interface Props {
+    items: string[];
+}
+
+export default function ArtistCard({
+    items,
+}: Props) {
     const [selectedArtist, setSelectedArtist] = useState("");
 
     useEffect(() => {
@@ -17,7 +22,7 @@ export default function ArtistCard() {
     return (
         <Flex h={"container"}>
             <FlatList
-                    data={ARTISTS}
+                    data={items}
                     renderItem={({ item }) => (
                         <Card 
                             key={item.id}

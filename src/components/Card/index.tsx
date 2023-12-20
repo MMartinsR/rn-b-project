@@ -4,15 +4,20 @@ import { TouchableOpacity } from "react-native";
 
 interface Props {
     type: string;
-    img: string;
+    img?: string;
     borderRadius?: string;
     size?: string;
     setSelected: (type: string) => void;
+    setImg: (img: string) => void;
 }
 
-export default function Card ({ type, img, borderRadius = "0px", size="xl", setSelected }: Props) {
+export default function Card ({ type, img, borderRadius = "0px", size="xl", setSelected, setImg }: Props) {
+
     return (
-        <TouchableOpacity onPress={() => setSelected(type)}>
+        <TouchableOpacity onPress={() => {
+            setSelected(type)
+            // setImg(img)
+        } }>
             <Image
                 m={2}
                 source={{

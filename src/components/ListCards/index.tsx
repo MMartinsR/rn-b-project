@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Alert, FlatList } from "react-native";
 import Card from "../Card";
-import { ALBUMS } from "../Data/data";
 import Selected from "../../components/SelectedAlbumDisplay";
 import { Flex, Heading, Text } from "native-base";
 
@@ -13,11 +12,13 @@ export default function ListCard({
     items,
   }: Props) {
     const [selectedAlbum, setSelectedAlbum] = useState("");
+    // const [img, setImg] = useState("");
 
     useEffect(() => {
         if (selectedAlbum == "Iron Maiden") {
             Alert.alert("Parabéns!", "Você selecionou um ótimo álbum!");
         }
+        
     }, [selectedAlbum])
 
     
@@ -32,13 +33,15 @@ export default function ListCard({
                             type={item.album}
                             img={item.img}                        
                             setSelected={setSelectedAlbum}
+                            // setImg={setImg}
                         />
                     )}
                     keyExtractor={(item) => item.id}
                     horizontal
             />
           
-            <Selected text={selectedAlbum} bgColor={"transparency.100"}/>            
+            <Selected text={selectedAlbum} bgColor={selectedAlbum !== ""? "transparency.100" : "primary.100"}  /> 
+            {/* img={img != null ? img : ""}            */}
         </Flex>
     )
 }

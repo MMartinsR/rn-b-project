@@ -2,9 +2,11 @@ import React from "react";
 import { Flex, Center, Spacer, Image, FavouriteIcon } from "native-base";
 import { TouchableOpacity } from "react-native";
 import { storage } from "../../database/db";
+import { useNavigation } from "@react-navigation/native";
 
 
 export default function Top() {
+    const navigator = useNavigation();
 
     return (
         <Flex h={"container"} direction="row"  bg='primary.100'>
@@ -19,6 +21,7 @@ export default function Top() {
             }}>
                 <TouchableOpacity onPress={() => {                    
                     storage.clearAll();
+                    // navigator.navigate('Login');
                 }}>
                 <Image
                 m={2}
