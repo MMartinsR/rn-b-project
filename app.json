@@ -22,14 +22,14 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.mariana_rosa.rnpbackend"
+      "package": "com.marianarosa.rnpbackend"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "extra": {
       "eas": {
-        "projectId": "8d0377a8-32dd-4cb9-885d-36ae0d24b805"
+        "projectId": "bb8e5719-e445-4af8-84ee-e7967983f304"
       }
     }
   }

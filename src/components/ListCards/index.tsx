@@ -3,7 +3,7 @@ import { Alert, FlatList } from "react-native";
 import Card from "../Card";
 import { ALBUMS } from "../Data/data";
 import Selected from "../../components/SelectedAlbumDisplay";
-import { Flex, Heading } from "native-base";
+import { Flex, Heading, Text } from "native-base";
 
 interface Props {
     items: string[];
@@ -37,7 +37,8 @@ export default function ListCard({
                     keyExtractor={(item) => item.id}
                     horizontal
             />
-            <Selected text={selectedAlbum}/>            
+          
+            <Selected text={selectedAlbum} bgColor={"transparency.100"}/>            
         </Flex>
     )
 }

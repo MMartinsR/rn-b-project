@@ -1,4 +1,4 @@
-package com.mariana_rosa.rnpbackend;
+package com.marianarosa.rnpbackend;
 
 import android.app.Application;
 import android.content.res.Configuration;

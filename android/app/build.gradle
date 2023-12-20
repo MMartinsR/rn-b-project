@@ -81,9 +81,9 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace 'com.mariana_rosa.rnpbackend'
+    namespace 'com.marianarosa.rnpbackend'
     defaultConfig {
-        applicationId 'com.mariana_rosa.rnpbackend'
+        applicationId 'com.marianarosa.rnpbackend'
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

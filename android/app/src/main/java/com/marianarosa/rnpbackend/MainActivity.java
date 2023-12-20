@@ -1,4 +1,4 @@
-package com.mariana_rosa.rnpbackend;
+package com.marianarosa.rnpbackend;
 
 import android.os.Build;
 import android.os.Bundle;

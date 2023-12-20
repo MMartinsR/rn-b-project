@@ -7,7 +7,7 @@ import UserContext from "../../context/userContext";
 import ListCard from "../../components/ListCards";
 import { getAlbums } from "../../services/albums";
 
-export default function Home({ navigation }) {
+export default function Home() {
     const userData = useContext(UserContext);
     const [albums, setAlbums] = useState([]);
 
@@ -19,7 +19,7 @@ export default function Home({ navigation }) {
 
     return (
         <Flex p={5} flex={1} bg='primary.100' safeAreaTop>
-            <Top navigation={navigation} />
+            <Top />
             <Heading fontSize='40px' pt={2} color='secondary.100'>Welcome back {userData.user?.name}</Heading>
             <Story/>
             <ListCard items={albums}/>            
