@@ -8,15 +8,13 @@ interface Props {
     borderRadius?: string;
     size?: string;
     setSelected: (type: string) => void;
-    setImg: (img: string) => void;
 }
 
-export default function Card ({ type, img, borderRadius = "0px", size="xl", setSelected, setImg }: Props) {
+export default function Card ({ type, img, borderRadius = "0px", size="xl", setSelected }: Props) {
 
     return (
         <TouchableOpacity onPress={() => {
             setSelected(type)
-            // setImg(img)
         } }>
             <Image
                 m={2}

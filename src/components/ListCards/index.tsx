@@ -12,15 +12,6 @@ export default function ListCard({
     items,
   }: Props) {
     const [selectedAlbum, setSelectedAlbum] = useState("");
-    // const [img, setImg] = useState("");
-
-    useEffect(() => {
-        if (selectedAlbum == "Iron Maiden") {
-            Alert.alert("Parabéns!", "Você selecionou um ótimo álbum!");
-        }
-        
-    }, [selectedAlbum])
-
     
     return (
         <Flex>
@@ -33,15 +24,14 @@ export default function ListCard({
                             type={item.album}
                             img={item.img}                        
                             setSelected={setSelectedAlbum}
-                            // setImg={setImg}
                         />
                     )}
                     keyExtractor={(item) => item.id}
                     horizontal
             />
           
-            <Selected text={selectedAlbum} bgColor={selectedAlbum !== ""? "transparency.100" : "primary.100"}  /> 
-            {/* img={img != null ? img : ""}            */}
+            <Selected text={selectedAlbum} bgColor={selectedAlbum !== ""? "transparency.100" : "primary.100"} /> 
+                       
         </Flex>
     )
 }

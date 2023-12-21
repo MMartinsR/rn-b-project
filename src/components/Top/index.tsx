@@ -21,7 +21,7 @@ export default function Top() {
             }}>
                 <TouchableOpacity onPress={() => {                    
                     storage.clearAll();
-                    // navigator.navigate('Login');
+                    navigator.navigate('Login');
                 }}>
                 <Image
                 m={2}

@@ -11,13 +11,6 @@ export default function ArtistCard({
     items,
 }: Props) {
     const [selectedArtist, setSelectedArtist] = useState("");
-
-    useEffect(() => {
-        // if (selectedAlbum == "Iron Maiden") {
-        //     Alert.alert("Parabéns!", "Você selecionou um ótimo álbum!");
-        // }
-    }, [selectedArtist])
-
     
     return (
         <Flex h={"container"}>

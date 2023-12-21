@@ -27,13 +27,14 @@ export default function Login() {
           email: "mariana.rosa@al.infnet.edu.br",
           token: response.data.token,
         });
+
       })
       .catch(function (error) {
         console.error("error", error);
         toast.show({
           description: 'Usuário ou senha inválidos!'
         })
-      });
+      });      
     }
 
     return (  
